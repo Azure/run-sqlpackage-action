@@ -90,3 +90,4 @@ runs:
 
           echo "::debug::SqlPackage intruction is '$SQLPACKAGE_CMD'"
           eval $SQLPACKAGE_CMD
+        done
