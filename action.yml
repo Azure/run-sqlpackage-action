@@ -31,7 +31,11 @@ inputs:
     description: 'The output file name. The final name of the file will be [dacpac_name].[outputfile]'
     required: false
     default: 'deployreport.xml' 
-    
+  diagnostics:
+    description: enable diagnostics for sqlpackage
+    required: false
+    default: '' 
+
 runs:
   using: "composite"
   steps:
@@ -67,7 +71,12 @@ runs:
               /Action:${{ inputs.action }} \
               /SourceFile:${{ inputs.sourcepath }}/$PACKAGE \
               /Profile:${{ inputs.profile }}"
-          
+
+          if [[ '${{ inputs.diagnostics }}' != '' ]]; then
+            SQLPACKAGE_CMD="$SQLPACKAGE_CMD \
+              /Diagnostics:True"
+          fi
+
           if [[ '${{ inputs.database-server }}' != '' ]]; then
             SQLPACKAGE_CMD="$SQLPACKAGE_CMD \
               /TargetServerName:${{ inputs.database-server }}"
