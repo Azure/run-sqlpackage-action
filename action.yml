@@ -55,6 +55,8 @@ runs:
         echo "::debug::Ensuring target folder '${{ inputs.outputpath }}'"
         mkdir -p ${{ inputs.outputpath }}
         
+        echo "::debug::profile filename '${{ inputs.profile }}'"
+        
         echo "::debug::Looking for dacpac files at '${{ inputs.sourcepath }}'"
         PACKAGE_PATHS=$(find ${{ inputs.sourcepath }} -name '*.dacpac' -exec basename {} \;)
 
