@@ -57,10 +57,8 @@ runs:
       shell: bash
       run: |
         echo "::debug::ensuring target folder '${{ inputs.outputpath }}'"
-        mkdir -p ${{ inputs.outputpath }}
-        
-        echo "::debug::profile filename '${{ inputs.profile }}'"
-        
+        mkdir -p ${{ inputs.outputpath }
+
         echo "::debug::Looking for dacpac files at '${{ inputs.sourcepath }}'"
         PACKAGE_PATHS=$(find ${{ inputs.sourcepath }} -name '*.dacpac' -exec basename {} \;)
 
@@ -75,6 +73,11 @@ runs:
           if [[ '${{ inputs.diagnostics }}' != '' ]]; then
             SQLPACKAGE_CMD="$SQLPACKAGE_CMD \
               /Diagnostics:True"
+            echo "::debug::profile filename '${{ inputs.profile }}'"  
+          fi
+
+          if [[ '${{ inputs.profile }}' != '' ]]; then
+            echo "::debug::profile filename '${{ inputs.profile }}'"  
           fi
 
           if [[ '${{ inputs.database-server }}' != '' ]]; then
