@@ -52,7 +52,7 @@ runs:
       name: Running SqlPackage tool
       shell: bash
       run: |
-        echo "::debug::Ensuring target folder '${{ inputs.outputpath }}'"
+        echo "::debug::ensuring target folder '${{ inputs.outputpath }}'"
         mkdir -p ${{ inputs.outputpath }}
         
         echo "::debug::profile filename '${{ inputs.profile }}'"
