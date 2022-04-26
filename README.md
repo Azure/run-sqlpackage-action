@@ -44,8 +44,8 @@ More often than not you are not starting a new database from scratch, but you al
 | <nobr>`database-name`</nobr> | Database name. If not indicated in the publishing profile, it has to be indicated here. | false |
 | `authtoken` | The authentication token used to connect to the database, if credentials not indicated in the connection string. | false |
 | `outputpath` | The output folder where assets will be generated if any. If not indicated, the current path is used. | false |
-| `outputfile` | The output file name. The final name of the file will be [dacpac_name].[outputfile]. The extension of the file depends on the action performed | false |
-
+| `outputfile` | The output file name. The final name of the file will be [dacpac_name].[outputfile]. The extension of the file depends on the action performed | false | 
+| `diagnostics` | Turn on sqlpackage diagnostics to assist in troublshooting. Set to True to enable diagnostics. | false |
 
 ### Example usage
 
@@ -97,6 +97,25 @@ with:
    database-server: mysynapse.sql.azuresynapse.net
    database-name: adventureworks
    authtoken: ${{ steps.sql-login.outputs.token }}
+```
+> Note 1: The parameter `authtoken` is provided as the output of another step.
+
+> Note 2: In this example `adventureworks` is a database inside of the `mysynapse` Synapse Workspace.
+
+#### Deploy changes in a target database specified as parameters with diagnostics
+
+```
+id: deploy-target
+name: Deploying changes to target
+uses: Azure/run-sqlpackage-action@v1.0.0
+with:
+   action: 'Publish'
+   sourcepath: build
+   profile: profile.xml
+   database-server: mysynapse.sql.azuresynapse.net
+   database-name: adventureworks
+   authtoken: ${{ steps.sql-login.outputs.token }}
+   diagnostics: True
 ```
 > Note 1: The parameter `authtoken` is provided as the output of another step.
 
