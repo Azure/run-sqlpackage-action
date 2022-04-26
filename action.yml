@@ -56,7 +56,7 @@ runs:
       name: Running SqlPackage tool
       shell: bash
       run: |
-        echo "::debug::ensuring target folder '${{ inputs.outputpath }}'"
+        echo "::debug::Ensuring target folder '${{ inputs.outputpath }}'"
         mkdir -p ${{ inputs.outputpath }
 
         echo "::debug::Looking for dacpac files at '${{ inputs.sourcepath }}'"
@@ -73,7 +73,6 @@ runs:
           if [[ '${{ inputs.diagnostics }}' != '' ]]; then
             SQLPACKAGE_CMD="$SQLPACKAGE_CMD \
               /Diagnostics:True"
-            echo "::debug::profile filename '${{ inputs.profile }}'"  
           fi
 
           if [[ '${{ inputs.profile }}' != '' ]]; then
