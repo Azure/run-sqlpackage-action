@@ -27,7 +27,7 @@ The output of a database project is a file in `dacpac` extension, which describe
     - A database user created on the target database associated with the mentioned Service Principal. Follow the documentation at [Create contained users mapped to Azure AD identities](https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)
     - An authentication token issued for the mentioned Service Principal and targeting the given database. You can use the GitHub Action [azure-resource-login](https://github.com/marketplace/actions/azure-resource-login) to generate such a token.
  - A [Visual Studio Database Project](https://docs.microsoft.com/en-us/sql/azure-data-studio/extensions/sql-database-project-extension?view=sql-server-ver15) created either using Azure Data Studio, VS Code or Microsoft Visual Studio. See [Working with an already existing database](#Working-with-an-already-existing-database) if you want to create a project based on an existing database.
- - A publishing profile in the format of an XML file indicating how deployment should be done. [A sample file](publish.xml) is provided in the repository for your convenience.
+ - A publishing profile in the format of an XML file indicating how deployment should be done. [A sample file](profile.xml) is provided in the repository for your convenience.
 
 #### Working with an already existing database
 
