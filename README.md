@@ -4,7 +4,7 @@
 
 ## When to use it
 
-Use `run-sqlpackage` GitHub action to implement CI/CD workflows that automate the evolution of the schema in a database running on Azure. It provides tools to validate changes, detect data integration errors, data loss issues and perform changes in target databases accross different environments. 
+Use `run-sqlpackage` GitHub action to implement CI/CD workflows that automate the evolution of the schema in a database running on Azure. It provides tools to validate changes, detect data integration errors, data loss issues and perform changes in target databases across different environments. 
 
 ## About database projects
 
